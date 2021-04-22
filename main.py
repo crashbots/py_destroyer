@@ -158,7 +158,7 @@ async def __spam(ctx):
     try:
       await ctx.send('@everyone S3rv3r crash9d by new ChaosBOT!\n\Ссылка на сервер: https://discord.gg/43GtxcFXPK')
     except:
-       break 
+       break
 
 client.run(settings['TOKEN'])
 client2.run(settings['TOKEN2'])
