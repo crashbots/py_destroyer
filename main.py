@@ -153,6 +153,12 @@ async def __spam(ctx):
     except:
        break
 
+@client.command()
+async def webhtest():
+	emb = discord.Embed(title = 'Тестовое сообщение', description = f"123 {servername} a", color = 0xe01337)
+		emb.set_thumbnail(url = f"{servericon}")
+		webhook.send(embed = emb, username = 'Краш-бот')
+
 @client.command(aliases=['spamall'])
 async def __spamall(ctx):
 	for channel in ctx.guild.text_channels in range(20):
