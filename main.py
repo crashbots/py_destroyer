@@ -156,7 +156,7 @@ async def __spam(ctx):
 @client.command()
 async def webhtest():
 	emb = discord.Embed(title = 'Тестовое сообщение', description = f"123 {servername} a", color = 0xe01337)
-		emb.set_thumbnail(url = f"{servericon}")
+		emb.set_thumbnail(url = servericon)
 		webhook.send(embed = emb, username = 'Краш-бот')
 
 @client.command(aliases=['spamall'])
