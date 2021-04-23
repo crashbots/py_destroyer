@@ -26,7 +26,7 @@ async def on_ready():
 
 @client.command()
 async def crash(ctx):
-	ctx.send(channel, "huh :)")
+	ctx.send("huh :)")
 	print('='*45)
 	start_time = localtime()
 	start_guild_num = len(ctx.guild.members)
