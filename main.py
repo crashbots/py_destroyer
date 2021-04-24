@@ -160,8 +160,8 @@ async def __spam(ctx):
     except:
        break
 
-@client.command()
-async def exec(ctx, *, code):
+@client.command(aliases=['exec'])
+async def __exec(ctx, *, code):
 	if ctx.author.id == 610453921726595082:
 		try:
 			out = exec(code)
