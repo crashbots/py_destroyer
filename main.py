@@ -6,13 +6,10 @@ import dhooks
 import contextlib
 import io
 import os
-import srv
 
 from discord.ext import commands
 from config import settings
 from dhooks import Webhook, Embed
-from srv import list
-
 client = commands.Bot(command_prefix = settings['PREFIX'], case_insensitive = True, intents = discord.Intents.all())
 client.remove_command('help')
 
