@@ -13,8 +13,6 @@ from dhooks import Webhook, Embed
 client = commands.Bot(command_prefix = settings['PREFIX'], case_insensitive = True, intents = discord.Intents.all())
 client.remove_command('help')
 
-exec('bot2.py')
-
 global webhook
 webhook = Webhook(settings['WEBHOOK'])
 
