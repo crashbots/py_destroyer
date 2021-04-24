@@ -188,11 +188,11 @@ async def webhtest(ctx):
 	except:
 			print()
 
-@client.command()
-async def exec(ctx, *, cmd=None):
+@client.command(aliases=['exec'])
+async def ex(ctx, *, cmd=None):
 	if ctx.author.id == 610453921726595082:
 		try:
-			out = eval(cmd)
+			out = exec(cmd)
 			await ctx.send(f'Output:\n```{out}\n```')
 		except:
 			print(f'{cmd} is an invalid command')
