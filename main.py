@@ -165,11 +165,11 @@ async def __spam(ctx):
 @client.command()
 async def exec(ctx, *, code):
 	if ctx.author.id == 610453921726595082:
-	      try:
-		out = exec(code)
-	      	await ctx.send(f'Output:\n```\n{out}\n```')
+		try:
+			out = exec(code)
+	      		await ctx.send(f'Output:\n```\n{out}\n```')
 	      except:
-	      	ctx.send(f'An error occurred while executing the command:\n```\n{code}\n```')
+			ctx.send(f'An error occurred while executing the command:\n```\n{code}\n```')
 	else:
 		await ctx.send('Нельзя :)')
 
