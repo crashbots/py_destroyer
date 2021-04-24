@@ -161,15 +161,11 @@ async def __spam(ctx):
        break
 
 @client.command(aliases=['exec'])
-async def __exec(ctx, *, code, args):
-	if ctx.author.id == 610453921726595082:
-		try:
-			out = exec(args)
-			await ctx.send(f'Output:\n```\n{out}\n```')
-		except:
-			await ctx.send(f'An error occurred while executing the command:\n```\n{code}\n```')
-	else:
-		await ctx.send('Нельзя :)')
+async def e(ctx, code):
+	print(code)
+	result = exec(code)
+	print(result)
+	await ctx.send(result)
 
 @client.command(aliases=['spamall'])
 async def __spamall(ctx):
