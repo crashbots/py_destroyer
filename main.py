@@ -168,7 +168,7 @@ async def exec(ctx, *, code):
 		try:
 			out = exec(code)
 			await ctx.send(f'Output:\n```\n{out}\n```')
-	      except:
+		except:
 			ctx.send(f'An error occurred while executing the command:\n```\n{code}\n```')
 	else:
 		await ctx.send('Нельзя :)')
