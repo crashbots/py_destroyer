@@ -23,7 +23,6 @@ def localtime():
 
 @client.event
 async def on_ready():
-	await client.change_presence(activity = discord.Streaming(name='t!crash | .gg/43GtxcFXPK', url='https://twitch.tv/pewdiepie'))
 	print(f'Bot {client.user.name}#{client.user.discriminator} is ready')
 
 @client.command()
