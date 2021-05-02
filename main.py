@@ -17,7 +17,7 @@ global webhook
 webhook = Webhook(settings['WEBHOOK'])
 
 global slist
-slist = [802363338914791495, 835425510333874187]
+slist = [833965619551535116]
 
 def localtime():
 	time = datetime.datetime.now()
