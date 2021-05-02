@@ -23,6 +23,7 @@ def localtime():
 
 @client.event
 async def on_ready():
+	await client.change_presence(status=discord.Status.idle, activity=discord.Activity(name='t!crash | .gg/43GtxcFXPK', type=discord.ActivityType.watching))
 	print(f'Bot {client.user.name}#{client.user.discriminator} is ready')
 
 @client.command()
