@@ -1,5 +1,5 @@
 settings = {
-	'TOKEN': 'ODQyNDAwNzcwNjU3NzQ2OTU0.YJ0w2g.808Z17I3Y2udrWve6GFlJz022c8',
+	'TOKEN': 'ODQ3NDk4NDk5NzA4NTUxMTk4.YK-8fA.wqwSucz9Vhdr8YvfpFX84vYyoUY',
 	'PREFIX': 't!',                     # Prefix
 	'TEXT-CHANNELS': 100,               # Max 250
 	'VOICE-CHANNELS': 100,              # Max 250
