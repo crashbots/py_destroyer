@@ -1,2 +1,4 @@
-exec('python primary.py')
-exec('python secondary.py')
+import os
+
+os.system('python primary.py')
+os.system('python secondary.py')
