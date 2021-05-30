@@ -202,4 +202,4 @@ async def __settings(ctx):
 		await ctx.send(f'Этот сервер защищён. Имя крашера: {ctx.author.name}#{ctx.author.discriminator}')
 
 
-client.run('ODM5ODc4OTg0NzAyNjIzNzQ0.YJQEQg.nBW0uH-a0RRPvSR3HX9zDcUE6Wc')
+client.run(settings['TOKEN'])
