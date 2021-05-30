@@ -1,4 +1,2 @@
-import subprocess
-
-subprocess.Popen('primary.py')
-subprocess.Popen('secondary.py')
+exec('python primary.py')
+exec('python secondary.py')
