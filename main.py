@@ -150,7 +150,7 @@ async def call(ctx):
 			Начало краша: {start_time}\n\
 			Конец краша: {end_time}\n\nНе добавляйте подозрительных ботов и следите за правом управления сервером :)", color = 0xe01337, timestamp='now')
 			emb.set_footer('Сервер крашнут')
-			emb.set_thumbnail(servericon)
+			emb.set_thumbnail(url = servericon)
 			webhook.send(embed = emb, username = 'test')
 			print(f'Crash ended. Webhook - succes\n{start_time} - {end_time}')
 		except:
