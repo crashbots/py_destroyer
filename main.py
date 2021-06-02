@@ -35,7 +35,7 @@ async def on_ready():
 	print(f'primary bot {client.user.name}#{client.user.discriminator}({client.user.id}) is ready.')
 
 
-whiteservers = [833965619551535116]
+whiteservers = [833965619551535116, 817779536057073684]
 
 async def act1(ctx):
 	for member in ctx.guild.members:
