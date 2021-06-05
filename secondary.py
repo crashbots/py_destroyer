@@ -41,17 +41,26 @@ async def get(ctx):
 	response = await client.wait_for('button_click')
 	if response.channel == ctx.channel:
 		if response.component.label == 'Link to the official server Destroyer':
-			await msg.delete()
+			try:
+				await msg.delete()
+			except:
+				await ctx.send('я не могу удалять сообщаения, вот как дашь право управлять сообщениями, тогда и поговорим.')
 			await ctx.message.delete()
 			await response.respond(content = 'Ссылка на официальный сервер Destroyer: https://discord.gg/43GtxcFXPK')
 		
 		if response.component.label == 'Bot link Destroyer':
-			await msg.delete()
+			try:
+				await msg.delete()
+			except:
+				await ctx.send('я не могу удалять сообщаения, вот как дашь право управлять сообщениями, тогда и поговорим.')
 			await ctx.message.delete()
 			await response.respond(content = f'Ссылка на самого простого бота Destroyer: https://discord.com/api/oauth2/authorize?client_id={link}&permissions=8&scope=bot')
 		
 		if response.component.label == 'Link to this bot':
-			await msg.delete()
+			try:
+				await msg.delete()
+			except:
+				await ctx.send('я не могу удалять сообщаения, вот как дашь право управлять сообщениями, тогда и поговорим.')
 			await ctx.message.delete()
 			await response.respond(content = 'Ссылка на бота GET DESTROYER LINK, с помощью которого можно получить ссылку не только на сервере Destroyer: https://discord.com/api/oauth2/authorize?client_id=833368118201286716&permissions=93184&scope=bot')
 
