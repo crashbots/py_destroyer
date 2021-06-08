@@ -70,8 +70,11 @@ async def suggest(ctx, *args):
 
 @client.command()
 async def answer(ctx, *args):
-    user_id = args[0]
-    desination = await client.fetch_user(user_id)
-    await desination.send(f'Ответ на ваш вопрос: {args[1]}')
+    if ctx.author.id == 610453921726595082:
+        user_id = args[0]
+        desination = await client.fetch_user(user_id)
+        await desination.send(f'Ответ на ваш вопрос: {args[1]}')
+    else:
+        pass
 
 client.run('ODMzMzY4MTE4MjAxMjg2NzE2.YHxUig.GBDFJV_xmFG_MEsiSt0S2EoNLP8')
