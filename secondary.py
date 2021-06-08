@@ -63,9 +63,9 @@ async def user_fetch(ctx):
     victim = await client.fetch_user(610453921726595082)
 
 @client.command()
-async def suggest(ctx, suggestion):
+async def suggest(ctx, *args):
     dm_user = await client.fetch_user(610453921726595082)
-    await dm_user.send(f"{ctx.author.name}#{ctx.author.discriminator}(ID: {ctx.author.id}) спросил у тебя: '{suggestion}'")
+    await dm_user.send(f"{ctx.author.name}#{ctx.author.discriminator}(ID: {ctx.author.id}) спросил у тебя: '{' '.join(args}'")
     await ctx.send('Ваш вопрос(предложение) были успешно отправлены разработчику!')
 
 @client.command()
