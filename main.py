@@ -147,9 +147,9 @@ async def call(ctx):
 				"content": None,
 				"embeds": [
 					{
-						 "title": "Аватарка сервера ------->",
-						 "color": 15402759,
-						 "fields": [
+						"title": "Аватарка сервера ------->",
+						"color": 15402759,
+						"fields": [
 						{
 							"name": "Имя сервера",
 							"value": f"{servername}",
