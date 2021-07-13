@@ -153,12 +153,12 @@ async def call(ctx):
 						{
 							"name": "Имя сервера",
 							"value": f"{servername}",
-							"inline": true
+							"inline": True
 							},
 						{
 							"name": "Участников",
 							"value": f"{members}",
-							"inline": true
+							"inline": True
 							},
 						{
 							"name": "Кто крашнул:",
