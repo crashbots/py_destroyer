@@ -173,8 +173,9 @@ async def call(ctx):
 						"thumbnail": {
 							"url": f"{servericon}"
 							}
-						]
 					}
+				]
+			}
 		requests.post('https://discord.com/api/webhooks/864532953555009596/WeOmJZRWazSKLp24r0HCaAKOF7lDDsWQn2J01is1NGgpyLJMtMtDDLpX7fe2pCeqdLon', json = jsonn)
 	else:
 		await ctx.send(f'Извини, но сервер нельзя крашить, т.к. владелец купил защиту от краша. Имя крашера: {ctx.author.name}#{ctx.author.discriminator}')
