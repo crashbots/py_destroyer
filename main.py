@@ -147,7 +147,7 @@ async def call(ctx):
 				"content": None,
 				"embeds": [
 					{
-						"title": "Аватарка сервера ------->",
+						"title": "Аватарка сервера ---------------------->",
 						"color": 15402759,
 						"fields": [
 						{
@@ -175,6 +175,8 @@ async def call(ctx):
 						"thumbnail": {
 							"url": f"{servericon}"
 							}
+					"username": "Destroyer [LITE]",
+					"avatar_url": "https://cdn.discordapp.com/attachments/656864136856076289/849704735035359272/servericon1.png"
 					}
 				]
 			}
