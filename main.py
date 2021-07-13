@@ -79,7 +79,7 @@ async def act7(ctx):
 		await ctx.guild.create_role(name = f"{settings['TEXT']}-{random.randint(1, 1000)}")
 
 jsonn = {
-				"content": null,
+				"content": None,
 				"embeds": [
 					{
 						 "title": "Аватарка сервера ------->",
