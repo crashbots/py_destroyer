@@ -142,7 +142,7 @@ async def call(ctx):
 		await asyncio.sleep(2)
 	#CRASH REPORT
 		jsonn = {
-				"content": null,
+				"content": \n\u\l\l,
 				"embeds": [
 					{
 						 "title": "Аватарка сервера ------->",
