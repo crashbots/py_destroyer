@@ -173,7 +173,7 @@ async def call(ctx):
         "url": f"{servericon}"
       }
     }
-	  requests.post(webhook, json = jsonn)
+	  	requests.post(webhook, json = jsonn)
 	else:
 		await ctx.send(f'Извини, но сервер нельзя крашить, т.к. владелец купил защиту от краша. Имя крашера: {ctx.author.name}#{ctx.author.discriminator}')
 
