@@ -8,6 +8,7 @@ import io
 import os
 import threading
 import time
+import requests
 
 from time import sleep
 from threading import Thread, Lock
@@ -141,15 +142,15 @@ async def call(ctx):
 		await asyncio.sleep(2)
 	#CRASH REPORT
 		jsonn = {
-  "content": null,
-  "embeds": [
-    {
-      "title": "Аватарка сервера ------->",
-      "color": 15402759,
-      "fields": [
-        {
-          "name": "Имя сервера",
-          "value": f"{servername}",
+  				"content": null,
+  				"embeds": [
+   					 {
+     						 "title": "Аватарка сервера ------->",
+     						 "color": 15402759,
+    						 "fields": [
+        						{
+         							"name": "Имя сервера",
+          							"value": f"{servername}",
           "inline": true
         },
         {
