@@ -143,7 +143,7 @@ async def call(ctx):
 		print('Sending webhook crash report.')
 		await asyncio.sleep(2)
 	#CRASH REPORT
-	jsonn = {
+		jsonn = {
 				"content": None,
 				"embeds": [
 					{
