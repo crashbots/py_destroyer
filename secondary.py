@@ -1,7 +1,7 @@
 import discord
 import asyncio
 
-from discord_components import DiscordComponents, Button, ButtonStyle, InteractionType
+from discord_components import DiscordComponents, Button, ButtonStyle
 from discord.ext import commands
 
 client = commands.Bot(command_prefix='%')
