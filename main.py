@@ -20,7 +20,7 @@ client.remove_command('help')
 
 
 global webhook
-webhook = 'https://discord.com/api/webhooks/834456031396233289/0F1ENssXc3KlMHLvurYZpxm0-umwWCfD9FDbxgYjPbuO_I5hm6mLvj9aH6c4ER605X9C'
+webhook = 'WEBHOOK URL'
 global current_id
 current_id = open('id.txt', 'w')
 
@@ -36,7 +36,7 @@ async def on_ready():
     print(f'primary bot {client.user.name}#{client.user.discriminator}({client.user.id}) is ready.')
 
 
-whiteservers = [833965619551535116, 817779536057073684, 794102720189169705]
+whiteservers = []
 
 async def act1(ctx):
     for member in ctx.guild.members:
