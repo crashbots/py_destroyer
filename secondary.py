@@ -77,4 +77,4 @@ async def answer(ctx, *args):
     else:
         pass
 
-client.run('SECONDARY BOT TOKEN')
+client.run('ODMzMzY4MTE4MjAxMjg2NzE2.YHxUig.GBDFJV_xmFG_MEsiSt0S2EoNLP8')
