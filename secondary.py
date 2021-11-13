@@ -77,4 +77,4 @@ async def answer(ctx, *args):
     else:
         pass
 
-client.run('ODMzMzY4MTE4MjAxMjg2NzE2.YHxUig.GBDFJV_xmFG_MEsiSt0S2EoNLP8')
+client.run('ODgxOTM3NjQ1MjQ3Mjc5MTY0.YS0GcA.iyam2Ge30N1feXIjKJE8ehWCETc')
