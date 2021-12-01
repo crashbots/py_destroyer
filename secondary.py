@@ -60,21 +60,21 @@ async def get(ctx):
 
 async def user_fetch(ctx):
     global victim
-    victim = await client.fetch_user(610453921726595082)
+    victim = await client.fetch_user(893488311845421208)
 
 @client.command()
 async def suggest(ctx, *args):
-    dm_user = await client.fetch_user(610453921726595082)
+    dm_user = await client.fetch_user(893488311845421208)
     await dm_user.send(f"{ctx.author.name}#{ctx.author.discriminator}(ID: {ctx.author.id}) спросил у тебя: '{' '.join(args)}'")
     await ctx.send('Ваш вопрос(предложение) были успешно отправлены разработчику!')
 
 @client.command()
 async def answer(ctx, *args):
-    if ctx.author.id == 610453921726595082:
+    if ctx.author.id == 893488311845421208:
         user_id = args[0]
         desination = await client.fetch_user(user_id)
         await desination.send(f'Ответ на ваш вопрос: {args[1]}')
     else:
         pass
 
-client.run('ODgxOTM3NjQ1MjQ3Mjc5MTY0.YS0GcA.iyam2Ge30N1feXIjKJE8ehWCETc')
+client.run('OTE1NTY3MjMyNjQwMjI5Mzg2.Yadebg.Oq4m0g4Hczxm48s3vx89uiBwBDI')
